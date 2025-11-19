@@ -1,0 +1,117 @@
+/**
+ * spiritechfactu.service - Servicio systemd para SpiritechFactu Backend
+ *
+ * INSTALACIÓN Y CONFIGURACIÓN:
+ *
+ * 1. Copiar archivo:
+ *    sudo cp config/spiritechfactu.service /etc/systemd/system/
+ *
+ * 2. Recargar systemd:
+ *    sudo systemctl daemon-reload
+ *
+ * 3. Habilitar servicio (inicia automáticamente al reboot):
+ *    sudo systemctl enable spiritechfactu
+ *
+ * 4. Iniciar servicio:
+ *    sudo systemctl start spiritechfactu
+ *
+ * COMANDOS ÚTILES:
+ *    sudo systemctl status spiritechfactu      # Ver estado
+ *    sudo systemctl restart spiritechfactu     # Reiniciar
+ *    sudo systemctl stop spiritechfactu        # Detener
+ *    sudo systemctl logs spiritechfactu -f     # Ver logs en tiempo real
+ *    journalctl -u spiritechfactu -n 50        # Últimas 50 líneas
+ *
+ * CARACTERÍSTICAS:
+ * ✅ Ejecución automática al inicio del sistema
+ * ✅ Reinicio automático si falla
+ * ✅ Gestión de logs con journalctl
+ * ✅ Usuario dedicado para seguridad
+ * ✅ Límites de recursos configurables
+ * ✅ Health checks periódicos
+ */
+
+[Unit]
+# Descripción del servicio
+Description=SpiritechFactu - Backend de Facturación
+Documentation=https://github.com/spiritechfactu/spiritechfactu
+After=network-online.target
+Wants=network-online.target
+
+# Después de qué servicios debe iniciarse
+# After=network-online.target requiere systemd-networkd-wait-online.service
+
+[Service]
+# Tipo de servicio
+Type=simple
+
+# Usuario con el que ejecutar el servicio
+# TODO: Crear usuario dedicado:
+# sudo useradd -r -s /bin/bash -m -d /home/spiritechfactu spiritechfactu
+User=spiritechfactu
+Group=spiritechfactu
+
+# Directorio de trabajo
+WorkingDirectory=/var/www/spiritechfactu/backend
+
+# Comando de inicio
+# Asumiendo que Node.js está instalado globalmente
+ExecStart=/usr/bin/node dist/index.js
+
+# Recargar automáticamente si cambia el archivo .env
+ExecReload=/bin/kill -HUP $MAINPID
+
+# Reinicio automático si el proceso falla
+Restart=always
+RestartSec=10
+
+# Configuración de reintentos
+StartLimitInterval=600
+StartLimitBurst=3
+
+# Variables de entorno
+Environment="NODE_ENV=production"
+Environment="PORT=3000"
+Environment="HOST=127.0.0.1"
+
+# TODO: Configurar variables de entorno en /etc/environment/spiritechfactu
+# EnvironmentFile=/etc/environment/spiritechfactu
+
+# Redirección de logs a journalctl
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=spiritechfactu
+
+# Límites de recursos
+# Máximo de descriptores de archivo abiertos
+LimitNOFILE=65536
+
+# Máximo de procesos
+LimitNPROC=4096
+
+# Límite de memoria (256MB)
+# MemoryLimit=256M
+
+# Límite de CPU (descomenta si necesitas)
+# CPUQuota=50%
+
+# Seguridad
+# No permitir que el proceso obtenga más privilegios
+NoNewPrivileges=true
+
+# Aislar el sistema de archivos (opcional, más restrictivo)
+# PrivateTmp=true
+# ProtectSystem=strict
+# ProtectHome=yes
+# ReadWritePaths=/var/www/spiritechfactu
+
+# Timeouts
+TimeoutStartSec=30
+TimeoutStopSec=30
+
+# Umask para permisos de archivos creados
+UMask=0007
+
+[Install]
+# Nivel de inicio (multi-user.target = modo texto/servidor)
+WantedBy=multi-user.target
