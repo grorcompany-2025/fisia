@@ -1,0 +1,67 @@
+{
+  "name": "ClaudeWeb",
+  "description": "Interfaz web moderna para Claude AI - Chat inteligente con API de Anthropic",
+  "logo": "https://raw.githubusercontent.com/anthropics/anthropic-sdk-typescript/main/assets/claude-logo.png",
+  "tags": ["ai", "chat", "claude", "anthropic", "react", "nodejs"],
+  "repository": "https://github.com/tu-usuario/claudeweb",
+  "services": [
+    {
+      "name": "backend",
+      "image": "node:18-alpine",
+      "source": {
+        "type": "docker",
+        "dockerfile": "./backend/Dockerfile",
+        "context": "./backend"
+      },
+      "env": {
+        "PORT": "3001",
+        "NODE_ENV": "production"
+      },
+      "ports": [
+        {
+          "published": 3001,
+          "target": 3001,
+          "protocol": "tcp"
+        }
+      ],
+      "healthCheck": {
+        "test": ["CMD", "node", "-e", "require('http').get('http://localhost:3001/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"],
+        "interval": "30s",
+        "timeout": "3s",
+        "retries": 3,
+        "startPeriod": "5s"
+      },
+      "deploy": {
+        "restartPolicy": "unless-stopped"
+      }
+    },
+    {
+      "name": "frontend",
+      "image": "nginx:alpine",
+      "source": {
+        "type": "docker",
+        "dockerfile": "./frontend/Dockerfile",
+        "context": "./frontend"
+      },
+      "env": {
+        "VITE_API_URL": "${BACKEND_URL}"
+      },
+      "ports": [
+        {
+          "published": 80,
+          "target": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "dependsOn": ["backend"],
+      "deploy": {
+        "restartPolicy": "unless-stopped"
+      }
+    }
+  ],
+  "volumes": [],
+  "instructions": {
+    "start": "## 🚀 ClaudeWeb está desplegado!\n\n### Próximos pasos:\n\n1. **Accede a la aplicación** en el dominio configurado\n2. **Configura tu API Key de Anthropic**:\n   - Ve a https://console.anthropic.com\n   - Genera una API Key\n   - En ClaudeWeb, click en ⚙️ y pega tu API Key\n3. **Selecciona el modelo** (recomendado: Claude 3.5 Sonnet)\n4. **¡Empieza a chatear!**\n\n### ℹ️ Información:\n\n- Frontend: Puerto 80\n- Backend API: Puerto 3001\n- Health check: http://tu-dominio:3001/health\n\n### 🔑 Nota de seguridad:\n\nLa API Key se guarda en el navegador (localStorage) y nunca se almacena en el servidor. Cada usuario debe configurar su propia API Key.",
+    "end": "## ⚠️ ClaudeWeb detenido\n\nPara volver a usar ClaudeWeb, simplemente inicia los servicios nuevamente desde Easypanel."
+  }
+}
