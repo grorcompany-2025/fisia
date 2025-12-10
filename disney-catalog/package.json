@@ -1,0 +1,29 @@
+{
+  "name": "disney100-britto-catalog",
+  "version": "1.0.0",
+  "description": "Static web catalog with Disney 100 + Romero Britto style - Dockerized for Railway deployment",
+  "author": "Disney100 x Britto",
+  "license": "MIT",
+  "keywords": [
+    "disney",
+    "romero-britto",
+    "catalog",
+    "static-site",
+    "docker",
+    "railway",
+    "pop-art"
+  ],
+  "scripts": {
+    "docker:build": "docker build -t disney-catalog .",
+    "docker:run": "docker run -d -p 8080:80 --name disney-catalog-app disney-catalog",
+    "docker:stop": "docker stop disney-catalog-app && docker rm disney-catalog-app",
+    "docker:logs": "docker logs -f disney-catalog-app",
+    "compose:up": "docker-compose up -d --build",
+    "compose:down": "docker-compose down",
+    "compose:logs": "docker-compose logs -f"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/disney-catalog"
+  }
+}
