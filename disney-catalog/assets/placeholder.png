@@ -1,0 +1,27 @@
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo gradiente Disney100 + Britto -->
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5D2E8C;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FF1493;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00BFFF;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="400" height="400" fill="url(#grad1)"/>
+  
+  <!-- Estrella Disney -->
+  <polygon points="200,80 220,150 290,150 235,190 255,260 200,220 145,260 165,190 110,150 180,150" 
+           fill="#FFD700" stroke="#5D2E8C" stroke-width="4"/>
+  
+  <!-- Texto -->
+  <text x="200" y="320" font-family="Arial, sans-serif" font-size="32" font-weight="bold" 
+        fill="white" text-anchor="middle" stroke="#5D2E8C" stroke-width="2">
+    Disney100
+  </text>
+  
+  <text x="200" y="355" font-family="Arial, sans-serif" font-size="24" font-weight="bold" 
+        fill="#FFD700" text-anchor="middle" stroke="#5D2E8C" stroke-width="2">
+    x Britto
+  </text>
+</svg>
