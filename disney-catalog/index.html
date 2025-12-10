@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disney100 x Romero Britto - Catálogo Mágico</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <meta name="description" content="Catálogo exclusivo Disney 100 años con diseños de Romero Britto. Colección de arte pop vibrante y mágico.">
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <h1>✨ Disney100 x Britto ✨</h1>
+        <p class="subtitle">Catálogo Mágico de Colección</p>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <div class="container">
+        <!-- CONTROLS: Search & Filter -->
+        <div class="controls">
+            <div class="search-box">
+                <label for="search">🔍 Buscar Producto</label>
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="Busca tu producto favorito..."
+                    autocomplete="off"
+                >
+            </div>
+
+            <div class="filter-box">
+                <label for="category-filter">🎨 Filtrar por Categoría</label>
+                <select id="category-filter">
+                    <option value="">Todas las Categorías</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- PRODUCTS GRID -->
+        <div class="products-grid" id="products-container">
+            <!-- Products will be loaded here dynamically -->
+        </div>
+
+        <!-- NO RESULTS MESSAGE -->
+        <div class="no-results hidden" id="no-results">
+            <p>😢 No se encontraron productos</p>
+            <p style="font-size: 1rem; color: #666; margin-top: 1rem;">
+                Intenta con otra búsqueda o categoría
+            </p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2025 Disney100 x Romero Britto | Arte Pop Mágico 🎨✨</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+            <a href="admin.html" style="color: var(--britto-yellow); text-decoration: none; font-weight: 700;">
+                🔧 Panel de Administración
+            </a>
+        </p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Disney100 x Britto</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- ADMIN HEADER -->
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>🔧 Panel de Administración</h1>
+            <p class="subtitle">Gestiona tu catálogo Disney100 x Britto</p>
+        </div>
+
+        <!-- FORM CARD: Add/Edit Product -->
+        <div class="form-card">
+            <h2 style="color: var(--disney-purple); margin-bottom: 1.5rem; text-align: center;">
+                ➕ Agregar / Editar Producto
+            </h2>
+
+            <form id="product-form">
+                <input type="hidden" id="product-id">
+
+                <div class="form-group">
+                    <label for="product-name">Nombre del Producto</label>
+                    <input
+                        type="text"
+                        id="product-name"
+                        placeholder="Ej: Mickey Mouse Premium"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="product-price">Precio (€)</label>
+                    <input
+                        type="number"
+                        id="product-price"
+                        placeholder="49.99"
+                        step="0.01"
+                        min="0"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="product-category">Categoría</label>
+                    <select id="product-category" required>
+                        <option value="">Selecciona una categoría</option>
+                        <option value="Peluches">Peluches</option>
+                        <option value="Decoración">Decoración</option>
+                        <option value="Hogar">Hogar</option>
+                        <option value="Arte">Arte</option>
+                        <option value="Juguetes">Juguetes</option>
+                        <option value="Accesorios">Accesorios</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="product-description">Descripción</label>
+                    <textarea
+                        id="product-description"
+                        placeholder="Describe el producto de forma atractiva..."
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="product-image">URL de Imagen</label>
+                    <input
+                        type="text"
+                        id="product-image"
+                        placeholder="assets/placeholder.png"
+                        value="assets/placeholder.png"
+                    >
+                    <small style="color: #666; display: block; margin-top: 0.5rem;">
+                        Usa rutas relativas o URLs completas
+                    </small>
+                </div>
+
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">
+                        💾 Guardar Producto
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="reset-form" style="flex: 1;">
+                        🔄 Limpiar Formulario
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- PRODUCTS LIST -->
+        <div class="products-list">
+            <h2 style="color: var(--disney-purple); margin-bottom: 1.5rem; text-align: center;">
+                📦 Lista de Productos
+            </h2>
+
+            <div id="admin-products-container">
+                <!-- Products will be loaded here -->
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button class="btn btn-download" id="download-json">
+                    ⬇️ Descargar products.json
+                </button>
+                <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                    Descarga el archivo y reemplázalo en Railway para aplicar los cambios
+                </p>
+            </div>
+        </div>
+
+        <!-- BACK TO CATALOG -->
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="index.html" class="btn btn-secondary" style="display: inline-block; text-decoration: none;">
+                ⬅️ Volver al Catálogo
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2025 Disney100 x Romero Britto | Panel de Administración 🔧</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script src="js/admin.js"></script>
+</body>
+</html>

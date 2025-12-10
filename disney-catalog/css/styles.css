@@ -1,0 +1,556 @@
+/* ============================================
+   DISNEY 100 + ROMERO BRITTO THEME
+   Paleta: Morado Disney100, Rosa Fuerte,
+   Azul Brillante, Amarillo Britto, Plata
+   ============================================ */
+
+:root {
+  /* Colores Disney100 + Britto */
+  --disney-purple: #5D2E8C;
+  --disney-silver: #C0C0C0;
+  --britto-pink: #FF1493;
+  --britto-blue: #00BFFF;
+  --britto-yellow: #FFD700;
+  --britto-orange: #FF6347;
+  --britto-green: #00FF7F;
+
+  /* Tonos complementarios */
+  --bg-gradient-start: #F0E6FF;
+  --bg-gradient-end: #FFE6F7;
+  --text-dark: #2C1654;
+  --text-light: #FFFFFF;
+  --border-width: 4px;
+
+  /* Sombras */
+  --shadow-soft: 0 8px 24px rgba(93, 46, 140, 0.15);
+  --shadow-hover: 0 12px 32px rgba(255, 20, 147, 0.25);
+  --shadow-pop: 0 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+  color: var(--text-dark);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   HEADER - ESTILO POP ART
+   ============================================ */
+
+header {
+  background: linear-gradient(90deg,
+    var(--disney-purple) 0%,
+    var(--britto-pink) 50%,
+    var(--britto-blue) 100%
+  );
+  padding: 2rem 0;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  border-bottom: var(--border-width) solid var(--disney-silver);
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: '✨';
+  position: absolute;
+  font-size: 3rem;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: sparkle 2s infinite;
+}
+
+header::after {
+  content: '🎨';
+  position: absolute;
+  font-size: 3rem;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: sparkle 2s infinite 1s;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
+  50% { opacity: 0.6; transform: translateY(-50%) scale(1.2); }
+}
+
+h1 {
+  color: var(--text-light);
+  font-size: 3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow:
+    3px 3px 0 rgba(0, 0, 0, 0.3),
+    6px 6px 0 rgba(255, 215, 0, 0.2);
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.subtitle {
+  color: var(--britto-yellow);
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   CONTAINER
+   ============================================ */
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* ============================================
+   CONTROLS - FILTROS Y BÚSQUEDA
+   ============================================ */
+
+.controls {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  border: var(--border-width) solid var(--disney-purple);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.search-box,
+.filter-box {
+  flex: 1;
+  min-width: 250px;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  color: var(--disney-purple);
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: var(--border-width) solid var(--britto-pink);
+  border-radius: 15px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  background: white;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-pop);
+}
+
+input[type="text"]:focus,
+select:focus {
+  outline: none;
+  border-color: var(--britto-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   PRODUCTS GRID - TARJETAS ESTILO JUGUETE
+   ============================================ */
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.product-card {
+  background: white;
+  border: var(--border-width) solid var(--disney-purple);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+}
+
+.product-card:hover::before {
+  top: 100%;
+}
+
+.product-card:hover {
+  transform: translateY(-10px) rotate(-1deg);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--britto-pink);
+}
+
+.product-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-bottom: var(--border-width) solid var(--britto-yellow);
+  background: linear-gradient(135deg,
+    var(--britto-pink) 0%,
+    var(--britto-blue) 50%,
+    var(--britto-yellow) 100%
+  );
+}
+
+.product-info {
+  padding: 1.5rem;
+}
+
+.category-badge {
+  display: inline-block;
+  background: var(--britto-pink);
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  border: 2px solid var(--disney-purple);
+  box-shadow: var(--shadow-pop);
+}
+
+.product-name {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--disney-purple);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.product-description {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.product-price {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--britto-pink);
+  text-shadow: 2px 2px 0 var(--britto-yellow);
+}
+
+/* ============================================
+   ADMIN STYLES
+   ============================================ */
+
+.admin-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.admin-header {
+  background: linear-gradient(90deg,
+    var(--britto-orange) 0%,
+    var(--britto-pink) 100%
+  );
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 2rem;
+  border: var(--border-width) solid var(--disney-purple);
+  box-shadow: var(--shadow-soft);
+}
+
+.admin-header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+.form-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  border: var(--border-width) solid var(--britto-blue);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 1rem;
+  border: var(--border-width) solid var(--britto-pink);
+  border-radius: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  box-shadow: var(--shadow-pop);
+  transition: all 0.3s ease;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* ============================================
+   BUTTONS - ESTILO POP ART
+   ============================================ */
+
+.btn {
+  padding: 1rem 2rem;
+  border: var(--border-width) solid var(--disney-purple);
+  border-radius: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-pop);
+  letter-spacing: 1px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--britto-pink), var(--britto-orange));
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, var(--britto-blue), var(--britto-green));
+  color: white;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #FF4444, #CC0000);
+  color: white;
+}
+
+.btn-danger:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, var(--britto-green), #00CC66);
+  color: white;
+}
+
+.btn-download {
+  background: linear-gradient(135deg, var(--disney-purple), var(--britto-blue));
+  color: white;
+  margin-top: 1rem;
+  display: inline-block;
+}
+
+/* ============================================
+   PRODUCTS LIST (ADMIN)
+   ============================================ */
+
+.products-list {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  border: var(--border-width) solid var(--britto-green);
+  box-shadow: var(--shadow-soft);
+}
+
+.product-item {
+  padding: 1.5rem;
+  border: 3px solid var(--britto-yellow);
+  border-radius: 15px;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #FFF9E6 0%, #FFE6F7 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.product-item:hover {
+  transform: translateX(10px);
+  box-shadow: var(--shadow-soft);
+}
+
+.product-item-info h3 {
+  color: var(--disney-purple);
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-item-info p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.product-item-price {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--britto-pink);
+  margin-right: 1rem;
+}
+
+.product-item-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+  background: linear-gradient(90deg,
+    var(--disney-purple) 0%,
+    var(--britto-pink) 100%
+  );
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
+  border-top: var(--border-width) solid var(--britto-yellow);
+  box-shadow: var(--shadow-soft);
+}
+
+footer p {
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .controls {
+    flex-direction: column;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .product-item-actions {
+    margin-top: 1rem;
+  }
+}
+
+/* ============================================
+   ANIMACIONES BRITTO
+   ============================================ */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes rainbow {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-center {
+  text-align: center;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ============================================
+   NO RESULTS MESSAGE
+   ============================================ */
+
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border: var(--border-width) dashed var(--britto-pink);
+  border-radius: 20px;
+  margin-top: 2rem;
+}
+
+.no-results p {
+  font-size: 1.5rem;
+  color: var(--disney-purple);
+  font-weight: 700;
+}

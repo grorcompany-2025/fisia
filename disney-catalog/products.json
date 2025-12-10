@@ -1,0 +1,66 @@
+[
+  {
+    "id": "1",
+    "name": "Mickey Mouse Plush Premium",
+    "price": 49.99,
+    "category": "Peluches",
+    "description": "Peluche de colección Mickey Mouse 100 años, edición especial con detalles bordados y acabado premium.",
+    "image": "assets/placeholder.png"
+  },
+  {
+    "id": "2",
+    "name": "Minnie Mouse Deluxe",
+    "price": 54.99,
+    "category": "Peluches",
+    "description": "Minnie Mouse con vestido plateado conmemorativo del centenario Disney. Incluye certificado de autenticidad.",
+    "image": "assets/placeholder.png"
+  },
+  {
+    "id": "3",
+    "name": "Castillo Mágico Disney100",
+    "price": 89.99,
+    "category": "Decoración",
+    "description": "Castillo decorativo luminoso con efectos especiales. Diseño Art Britto exclusivo con colores vibrantes.",
+    "image": "assets/placeholder.png"
+  },
+  {
+    "id": "4",
+    "name": "Set de Tazas Coleccionables",
+    "price": 34.99,
+    "category": "Hogar",
+    "description": "Set de 4 tazas con diseños únicos de Romero Britto. Cerámica premium con bordes dorados.",
+    "image": "assets/placeholder.png"
+  },
+  {
+    "id": "5",
+    "name": "Póster Artístico Disney100",
+    "price": 24.99,
+    "category": "Arte",
+    "description": "Póster de edición limitada con estilo pop art Britto. Impresión de alta calidad en papel premium.",
+    "image": "assets/placeholder.png"
+  },
+  {
+    "id": "6",
+    "name": "Stitch Romero Britto Edition",
+    "price": 64.99,
+    "category": "Peluches",
+    "description": "Stitch con diseño exclusivo de Romero Britto. Colores brillantes y patrón único. Edición limitada.",
+    "image": "assets/placeholder.png"
+  },
+  {
+    "id": "7",
+    "name": "Cojín Decorativo Mickey Pop",
+    "price": 29.99,
+    "category": "Hogar",
+    "description": "Cojín de terciopelo con diseño Mickey estilo pop art. Relleno premium y cremallera oculta.",
+    "image": "assets/placeholder.png"
+  },
+  {
+    "id": "8",
+    "name": "Lámpara Cenicienta Brillante",
+    "price": 79.99,
+    "category": "Decoración",
+    "description": "Lámpara LED con silueta de Cenicienta. Efectos de luz multicolor y control remoto incluido.",
+    "image": "assets/placeholder.png"
+  }
+]
